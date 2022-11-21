@@ -8,7 +8,7 @@ fn main() {
     const GAMING_RANGE: RangeInclusive<u32> = LOWER_LIMIT..=UPPER_LIMIT;
 
     println!("Guess the number!");
-    let secret_number: u32 = rand::thread_rng().gen_range(GAMING_RANGE);
+    let secret_number: u32 = generate_secret(GAMING_RANGE);
     let mut number_of_attempts: u32 = 0;
 
     loop {
@@ -41,6 +41,10 @@ fn main() {
         if needs_a_tip(number_of_attempts) {
             println!("Pss. Secret number is {secret_number}.");
         }
+    }
+
+    fn generate_secret(range: RangeInclusive<u32>) -> u32 {
+        rand::thread_rng().gen_range(range)
     }
 
     fn guess_within_gaming_range(guess: &u32) -> bool {

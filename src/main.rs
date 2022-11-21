@@ -1,4 +1,4 @@
-use std::{ io, ops::{ RangeInclusive } };
+use std::{ io, ops::RangeInclusive };
 
 use rand::Rng;
 

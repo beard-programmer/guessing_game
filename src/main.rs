@@ -1,10 +1,10 @@
-use std::{ io, ops::RangeInclusive };
+use std::{io, ops::RangeInclusive};
 
 use rand::Rng;
 
 fn main() {
     const LOWER_LIMIT: u32 = 1;
-    const UPPER_LIMIT: u32 = 15;
+    const UPPER_LIMIT: u32 = 100;
     const GAMING_RANGE: RangeInclusive<u32> = LOWER_LIMIT..=UPPER_LIMIT;
 
     println!("Guess the number!");
@@ -14,7 +14,9 @@ fn main() {
     loop {
         println!("Please, input ur guess, between {LOWER_LIMIT} and {UPPER_LIMIT}");
         let mut user_input = String::new();
-        io::stdin().read_line(&mut user_input).expect("Failed to read line");
+        io::stdin()
+            .read_line(&mut user_input)
+            .expect("Failed to read line");
         let guess: u32 = match user_input.trim().parse() {
             Ok(number) => number,
             Err(_) => {
